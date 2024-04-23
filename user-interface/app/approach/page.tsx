@@ -3,7 +3,6 @@ import React from "react";
 import { useRouter } from "next/navigation";
 import { Card, CardFooter, Image } from "@nextui-org/react";
 import { ArrowRightIcon } from "@heroicons/react/24/solid";
-import { title } from "@/components/primitives";
 import { motion } from "framer-motion";
 import { Header } from "@/components/header";
 
