@@ -9,7 +9,7 @@ export default function Home() {
   const router = useRouter();
 
   return (
-    <section className="flex flex-col items-center justify-center h-full">
+    <section className="flex flex-col items-center justify-center h-screen">
       <div className="inline-block max-w-full text-center justify-center">
         <h1 className={title({ size: "xxl" })}>Crafting&nbsp;</h1>
         <h1

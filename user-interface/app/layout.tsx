@@ -19,9 +19,9 @@ export default function RootLayout({
         )}
       >
         <Providers>
-          <div className="relative flex flex-col h-screen w-screen bg-gradient-to-r from-indigo-100">
+          <div className="relative flex flex-col h-full w-full bg-gradient-to-r from-indigo-100">
             <Navbar />
-            <main className="container mx-auto h-screen flex-grow">
+            <main className="container mx-auto h-full flex-grow">
               {children}
             </main>
             {/* TODO: Footer */}
