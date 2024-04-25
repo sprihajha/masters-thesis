@@ -55,7 +55,7 @@ export default function FormPage() {
 
   const handleApiCall = async () => {
     let method = "";
-    let baseURL = "http://ec2-18-206-88-15.compute-1.amazonaws.com:8080/";
+    let baseURL = "https://thesis.sprihajha.com";
     const body = {
       zip_code: zipCode,
       metro,
