@@ -4,7 +4,7 @@ export default function PricingLayout({
   children: React.ReactNode;
 }) {
   return (
-    <section className="flex flex-col items-center justify-start h-full">
+    <section className="flex flex-col items-center justify-start">
       {children}
     </section>
   );
