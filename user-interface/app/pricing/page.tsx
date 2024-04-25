@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import {
   Table,
   TableHeader,
@@ -20,14 +20,18 @@ interface APIResponse {
 
 // Mapping API keys to user-friendly display names
 const keyNameMap: { [key: string]: string } = {
-  predicted_value: "Predicted Value",
+  income_value: "Predicted Value",
+  cost_value: "Predicted Value",
+  sales_value: "Predicted Value",
   address: "Address",
   city: "City",
   state: "State",
   zip_code: "Zip Code",
   grm: "Gross Rent Multiplier",
   gross_rent: "Gross Annual Rent",
+  income_value_description: "Description",
   value_description: "Description",
+  sales_value_description: "Description",
   bathroom: "Number of Bathrooms",
   bedroom: "Number of Bedrooms",
   ppsqft: "Price Per Sq Ft",
@@ -40,7 +44,6 @@ const keyNameMap: { [key: string]: string } = {
 };
 
 export default function PricePage() {
-  const router = useRouter();
   const searchParams = useSearchParams();
   const [approach, setApproach] = useState<Approach | null>(null);
   const [data, setData] = useState<APIResponse | null>(null);
@@ -56,6 +59,50 @@ export default function PricePage() {
       }
     }
   }, [searchParams, approach]);
+
+  const handleDownload = async () => {
+    let url = "";
+
+    switch (approach) {
+      case "sales":
+        url = "/sales_comparison_value_fill_pdf";
+        break;
+      case "income":
+        url = "/income_method_value_fill_pdf";
+        break;
+      case "cost":
+        url = "/cost_method_value_fill_pdf";
+        break;
+      default:
+        console.error("Unknown approach");
+        return;
+    }
+
+    try {
+      const response = await fetch(`http://127.0.0.1:5000${url}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/pdf",
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        const blob: Blob = await response.blob();
+        const objectUrl = URL.createObjectURL(blob);
+        const link: HTMLAnchorElement = document.createElement("a");
+        link.href = objectUrl;
+        link.download = `${approach}` + "appraisal.pdf";
+        link.click();
+        URL.revokeObjectURL(objectUrl);
+      } else {
+        console.error("Failed to fetch API data");
+      }
+    } catch (error) {
+      console.error("Error during API call", error);
+    }
+  };
 
   return (
     <>
@@ -84,6 +131,7 @@ export default function PricePage() {
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         className="bg-gradient-to-tr from-indigo-500 via-purple-500 to-pink-500 text-white shadow-lg py-2 px-3 rounded-lg mb-28"
+        onClick={handleDownload}
       >
         Download your report!
       </motion.button>
