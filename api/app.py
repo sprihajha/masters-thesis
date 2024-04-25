@@ -243,7 +243,6 @@ def fill_pdf(input_pdf_path, data):
     with open(input_pdf_path, "rb") as file:
         reader = PyPDF2.PdfReader(file)
         writer = PyPDF2.PdfWriter()
-        print(reader.get_form_text_fields())
         writer.append_pages_from_reader(reader)
 
         for i in range(0, 3):

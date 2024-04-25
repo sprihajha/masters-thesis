@@ -55,7 +55,7 @@ export default function FormPage() {
 
   const handleApiCall = async () => {
     let method = "";
-    let baseURL = "https://thesis.sprihajha.com";
+    let baseURL = "http://127.0.0.1:5000";
     const body = {
       zip_code: zipCode,
       metro,
@@ -96,6 +96,9 @@ export default function FormPage() {
     try {
       const response = await fetch(`${baseURL}${method}`, {
         method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify(body),
       });
 

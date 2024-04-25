@@ -82,6 +82,11 @@ export default function PricePage() {
     try {
       const response = await fetch(`${baseURL}${url}`, {
         method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/pdf",
+        },
+
         body: JSON.stringify(data),
       });
 
