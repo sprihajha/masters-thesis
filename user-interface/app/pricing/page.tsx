@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import {
   Table,
@@ -107,7 +107,7 @@ export default function PricePage() {
   };
 
   return (
-    <>
+    <Suspense>
       <Header first="Review your" second="Pricing" />
       <div>
         {data ? (
@@ -137,6 +137,6 @@ export default function PricePage() {
       >
         Download your report!
       </motion.button>
-    </>
+    </Suspense>
   );
 }

@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, Suspense } from "react";
 import {
   Input,
   Autocomplete,
@@ -135,7 +135,7 @@ export default function FormPage() {
   };
 
   return (
-    <>
+    <Suspense>
       <Header first="Fill your" second="Information" />
       <div className="flex flex-col space-y-4 w-1/3 mx-auto mb-10">
         <Input
@@ -313,6 +313,6 @@ export default function FormPage() {
           Get your results!
         </motion.button>
       </div>
-    </>
+    </Suspense>
   );
 }
