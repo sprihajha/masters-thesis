@@ -44,7 +44,6 @@ export default function FormPage() {
   const [dwellingSqft, setDwellingSqft] = useState(0);
   const [garagePerSqft, setGaragePerSqft] = useState(0);
   const [garageSqft, setGarageSqft] = useState(0);
-  const [costNew, setCostNew] = useState(0);
   const [totalDepreciation, setTotalDepreciation] = useState(0);
 
   useEffect(() => {
@@ -76,7 +75,6 @@ export default function FormPage() {
       dsqft: dwellingSqft,
       gppsqft: garagePerSqft,
       gsqft: garageSqft,
-      costNew,
       depreciation: totalDepreciation,
     };
 
@@ -230,13 +228,6 @@ export default function FormPage() {
               type="number"
               placeholder="Total Sqft of Garage"
               onChange={(e) => setGarageSqft(parseFloat(e.target.value))}
-            />
-            <Input
-              isClearable
-              label="Cost New"
-              type="number"
-              placeholder="Total New Construction Cost"
-              onChange={(e) => setCostNew(parseFloat(e.target.value))}
             />
             <Input
               isClearable
