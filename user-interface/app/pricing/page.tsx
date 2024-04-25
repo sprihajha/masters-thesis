@@ -62,6 +62,7 @@ export default function PricePage() {
 
   const handleDownload = async () => {
     let url = "";
+    let baseURL = "http://127.0.0.1:5000";
 
     switch (approach) {
       case "sales":
@@ -79,7 +80,7 @@ export default function PricePage() {
     }
 
     try {
-      const response = await fetch(`http://127.0.0.1:5000${url}`, {
+      const response = await fetch(`${baseURL}${url}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -94,6 +95,7 @@ export default function PricePage() {
         const link: HTMLAnchorElement = document.createElement("a");
         link.href = objectUrl;
         link.download = `${approach}` + "appraisal.pdf";
+        window.open(link.href, "_blank");
         link.click();
         URL.revokeObjectURL(objectUrl);
       } else {

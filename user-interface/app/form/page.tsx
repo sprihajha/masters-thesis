@@ -55,7 +55,8 @@ export default function FormPage() {
   }, [searchParams]);
 
   const handleApiCall = async () => {
-    let url = "";
+    let method = "";
+    let baseURL = "http://127.0.0.1:5000";
     const body = {
       zip_code: zipCode,
       metro,
@@ -81,13 +82,13 @@ export default function FormPage() {
 
     switch (approach) {
       case "sales":
-        url = "/sales_method_value";
+        method = "/sales_method_value";
         break;
       case "income":
-        url = "/income_method_value";
+        method = "/income_method_value";
         break;
       case "cost":
-        url = "/cost_method_value";
+        method = "/cost_method_value";
         break;
       default:
         console.error("Unknown approach");
@@ -95,7 +96,7 @@ export default function FormPage() {
     }
 
     try {
-      const response = await fetch(`http://127.0.0.1:5000${url}`, {
+      const response = await fetch(`${baseURL}${method}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -125,7 +126,7 @@ export default function FormPage() {
       setFileName(`${filesArray.length}` + " files selected");
       setImageBase64Strings(base64Strings);
     } else {
-      setFileName("Choose a file..."); // Reset if no file is selected
+      setFileName("Choose a file...");
     }
   };
 
