@@ -62,7 +62,7 @@ export default function PricePage() {
 
   const handleDownload = async () => {
     let url = "";
-    let baseURL = "http://127.0.0.1:5000";
+    let baseURL = "http://ec2-18-206-88-15.compute-1.amazonaws.com:8080/";
 
     switch (approach) {
       case "sales":

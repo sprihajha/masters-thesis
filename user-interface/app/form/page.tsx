@@ -56,7 +56,7 @@ export default function FormPage() {
 
   const handleApiCall = async () => {
     let method = "";
-    let baseURL = "http://127.0.0.1:5000";
+    let baseURL = "http://ec2-18-206-88-15.compute-1.amazonaws.com:8080/";
     const body = {
       zip_code: zipCode,
       metro,
