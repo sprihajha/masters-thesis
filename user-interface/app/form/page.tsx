@@ -96,9 +96,6 @@ export default function FormPage() {
     try {
       const response = await fetch(`${baseURL}${method}`, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
         body: JSON.stringify(body),
       });
 
