@@ -37,7 +37,7 @@ export default function FormPage() {
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
-  const [fileName, setFileName] = useState("Choose a file...");
+  const [fileName, setFileName] = useState("Add property images...");
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [siteValue, setSiteValue] = useState(0);
   const [dwellingPerSqft, setDwellingPerSqft] = useState(0);
@@ -55,7 +55,7 @@ export default function FormPage() {
 
   const handleApiCall = async () => {
     let method = "";
-    let baseURL = "http://127.0.0.1:5000";
+    let baseURL = "https://thesis.sprihajha.com/api";
     const body = {
       zip_code: zipCode,
       metro,
@@ -138,6 +138,7 @@ export default function FormPage() {
       <div className="flex flex-col space-y-4 w-1/3 mx-auto mb-10">
         <Input
           isClearable
+          isRequired
           label="Property Address"
           type="text"
           placeholder="Enter the property address"
@@ -146,6 +147,7 @@ export default function FormPage() {
         />
         <Input
           isClearable
+          isRequired
           label="City"
           type="text"
           placeholder="Enter the City"
@@ -154,6 +156,7 @@ export default function FormPage() {
         />
         <Input
           isClearable
+          isRequired
           label="State"
           type="text"
           placeholder="Enter the State, e.g. NY"
@@ -162,6 +165,7 @@ export default function FormPage() {
         />
         <Input
           isClearable
+          isRequired
           label="Zipcode"
           type="text"
           placeholder="Enter the zipcode"
@@ -171,6 +175,7 @@ export default function FormPage() {
         {approach === "income" && (
           <>
             <Autocomplete
+              isRequired
               label="Metro Region"
               placeholder="Enter the region"
               className="w-full"
@@ -183,6 +188,7 @@ export default function FormPage() {
               ))}
             </Autocomplete>
             <Input
+              isRequired
               label="Gross Annual Rent"
               type="number"
               placeholder="Real estate revenue - Operating expenses"
@@ -195,6 +201,7 @@ export default function FormPage() {
         {approach === "cost" && (
           <>
             <Input
+              isRequired
               isClearable
               label="Site Value"
               type="number"
@@ -202,6 +209,7 @@ export default function FormPage() {
               onChange={(e) => setSiteValue(parseFloat(e.target.value))}
             />
             <Input
+              isRequired
               isClearable
               label="Dwelling per Sqft"
               type="number"
@@ -209,6 +217,7 @@ export default function FormPage() {
               onChange={(e) => setDwellingPerSqft(parseFloat(e.target.value))}
             />
             <Input
+              isRequired
               isClearable
               label="Dwelling Sqft"
               type="number"
@@ -216,6 +225,7 @@ export default function FormPage() {
               onChange={(e) => setDwellingSqft(parseFloat(e.target.value))}
             />
             <Input
+              isRequired
               isClearable
               label="Garage per Sqft"
               type="number"
@@ -223,6 +233,7 @@ export default function FormPage() {
               onChange={(e) => setGaragePerSqft(parseFloat(e.target.value))}
             />
             <Input
+              isRequired
               isClearable
               label="Garage Sqft"
               type="number"
@@ -230,6 +241,7 @@ export default function FormPage() {
               onChange={(e) => setGarageSqft(parseFloat(e.target.value))}
             />
             <Input
+              isRequired
               isClearable
               label="Total Depreciation"
               type="number"
@@ -241,6 +253,7 @@ export default function FormPage() {
         {approach !== "cost" && (
           <>
             <Input
+              isRequired
               label="Number of Bedrooms"
               type="number"
               placeholder="Enter the bedroom count"
@@ -248,6 +261,7 @@ export default function FormPage() {
               onChange={(e) => setBedroom(e.target.value)}
             />
             <Input
+              isRequired
               label="Number of Bathrooms"
               type="number"
               placeholder="Enter the bathroom count"
@@ -255,6 +269,7 @@ export default function FormPage() {
               onChange={(e) => setBathroom(e.target.value)}
             />
             <Input
+              isRequired
               label="Sqft"
               type="number"
               placeholder="Enter the sqft"
@@ -262,6 +277,7 @@ export default function FormPage() {
               onChange={(e) => setSqft(e.target.value)}
             />
             <Input
+              isRequired
               label="Last Sale Date"
               type="month"
               placeholder="Month/Year"
@@ -269,6 +285,7 @@ export default function FormPage() {
               onChange={(e) => setLastSaleDate(e.target.value)}
             />
             <Input
+              isRequired
               label="Last Sale Value"
               type="number"
               placeholder="Enter the last sale value"
@@ -276,6 +293,7 @@ export default function FormPage() {
               onChange={(e) => setLastSaleValue(parseFloat(e.target.value))}
             />
             <Textarea
+              isRequired
               label="Description"
               placeholder="Enter a description"
               className="w-full"

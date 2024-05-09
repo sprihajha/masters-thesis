@@ -26,6 +26,6 @@ export const siteConfig = {
     },
   ],
   links: {
-    github: "https://github.com/sprihajha/thesis",
+    github: "https://github.com/sprihajha/masters-thesis",
   },
 };

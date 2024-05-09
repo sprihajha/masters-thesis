@@ -39,8 +39,7 @@ prompt = PromptTemplate(
         "sqft",
         "image_descriptions",
     ],
-    partial_variables={
-        "format_instructions": parser.get_format_instructions()},
+    partial_variables={"format_instructions": parser.get_format_instructions()},
 )
 
 chain = prompt | model | parser
@@ -77,13 +76,11 @@ zori_formatted_date_columns = [
 ]
 
 # Update the DataFrame column names
-zhvi_data.columns = zhvi_data.columns[:9].tolist(
-) + zhvi_formatted_date_columns
+zhvi_data.columns = zhvi_data.columns[:9].tolist() + zhvi_formatted_date_columns
 zhvi_metro_data.columns = (
     zhvi_metro_data.columns[:5].tolist() + zhvi_metro_formatted_date_columns
 )
-zori_data.columns = zori_data.columns[:5].tolist(
-) + zori_formatted_date_columns
+zori_data.columns = zori_data.columns[:5].tolist() + zori_formatted_date_columns
 
 
 def describe_image(base64_image):
@@ -161,8 +158,7 @@ def sales_comparison_value(
         }
     )
 
-    predicted_value = int(
-        property_data["cost"].replace("$", "").replace(",", ""))
+    predicted_value = int(property_data["cost"].replace("$", "").replace(",", ""))
     value_description = property_data["description"]
 
     return predicted_value, value_description
@@ -226,8 +222,7 @@ def income_method_value(
         }
     )
 
-    llm_predicted_value = float(
-        property_data["cost"].replace("$", "").replace(",", ""))
+    llm_predicted_value = float(property_data["cost"].replace("$", "").replace(",", ""))
 
     grm = llm_predicted_value / (predicted_rent_value * 12)
 
@@ -260,7 +255,7 @@ def fill_pdf(input_pdf_path, data):
         return output_pdf
 
 
-@app.route("/sales_comparison_value", methods=["POST"])
+@app.route("/api/sales_comparison_value", methods=["POST"])
 def get_sales_comparison_value():
     # Retrieve JSON data from the request body
     data = request.get_json()
@@ -332,7 +327,7 @@ def get_sales_comparison_value():
         return jsonify({"error": str(e)}), 500
 
 
-@app.route("/income_method_value", methods=["POST"])
+@app.route("/api/income_method_value", methods=["POST"])
 def get_income_method_value():
     # Retrieve JSON data from the request body
     data = request.get_json()
@@ -406,7 +401,7 @@ def get_income_method_value():
         return jsonify({"error": str(e)}), 500
 
 
-@app.route("/cost_method_value", methods=["POST"])
+@app.route("/api/cost_method_value", methods=["POST"])
 def get_cost_method_value():
     # Retrieve JSON data from the request body
     data = request.get_json()
@@ -472,7 +467,7 @@ def get_cost_method_value():
         return jsonify({"error": str(e)}), 500
 
 
-@app.route("/income_method_value_fill_pdf", methods=["POST"])
+@app.route("/api/income_method_value_fill_pdf", methods=["POST"])
 def income_method_value_fill_pdf():
     data = request.get_json()
     output_pdf = fill_pdf("./1004_fillable.pdf", data)
@@ -481,7 +476,7 @@ def income_method_value_fill_pdf():
     )
 
 
-@app.route("/cost_method_value_fill_pdf", methods=["POST"])
+@app.route("/api/cost_method_value_fill_pdf", methods=["POST"])
 def cost_method_value_fill_pdf():
     data = request.get_json()
     output_pdf = fill_pdf("./1004_fillable.pdf", data)
@@ -490,7 +485,7 @@ def cost_method_value_fill_pdf():
     )
 
 
-@app.route("/sales_comparison_value_fill_pdf", methods=["POST"])
+@app.route("/api/sales_comparison_value_fill_pdf", methods=["POST"])
 def sales_comparison_value_fill_pdf():
     data = request.get_json()
     output_pdf = fill_pdf("./1004_fillable.pdf", data)

@@ -62,7 +62,7 @@ export default function PricePage() {
 
   const handleDownload = async () => {
     let url = "";
-    let baseURL = "https://thesis.sprihajha.com";
+    let baseURL = "https://thesis.sprihajha.com/api";
 
     switch (approach) {
       case "sales":
