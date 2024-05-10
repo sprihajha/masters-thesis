@@ -13,7 +13,7 @@ The repository is organized into the following directories:
 - `/api`: Contains the Flask backend implementation.
   - `app.py`: The main Python script that serves as the entry point for the API.
   - `1004_fillable.pdf`: The fillable format of Form 1004 used for property valuation.
-  - `Metro_zhvi.csv`, `Metro_zori.csv`, `Zip_zhvi.csv`: Get updated Zillow Single-Family Housing data from their [website](https://www.zillow.com/research/data/)
+  - `Metro_zhvi.csv`, `Metro_zori.csv`, `Zip_zhvi.csv`: Get updated Zillow Single-Family Housing data from their [website](https://www.zillow.com/research/data/).
 
 - `/user-interface`: directory houses the Next.js application which provides a user-friendly interface for interacting with the appraisal system. It facilitates the appraisal process through a series of interactive pages, allowing users to input data and receive valuations.
   - `app/`: Next.js pages directory.
@@ -24,7 +24,7 @@ The repository is organized into the following directories:
 
 To run the application locally, follow these steps:
 
-1. Clone the repository: git clone <https://github.com/your-username/your-repository.git>
+1. Clone the repository
 
 2. Navigate to the `/api` directory and install the required Python dependencies:
 
